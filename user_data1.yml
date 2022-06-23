@@ -1,0 +1,10 @@
+---
+users:
+  - name: abhay
+    password: abhay123
+  - name: beena
+    password: beena123
+  - name: cranky
+    password: cranky123
+  - name: deep
+    password: deep123

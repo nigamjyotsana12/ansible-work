@@ -1,0 +1,14 @@
+---
+- name: creating multiple users
+  hosts: web
+  become: true
+  vars_files:
+    - user_data1.yml
+  tasks:
+   - name: creating multiple users now
+     user: 
+      name: "{{ item.name }}"
+      password: "{{ item.password | password_hash('sha512') }}"
+      state: present
+     loop: "{{ users }}"
+

@@ -1,0 +1,9 @@
+---
+- name: check output
+  hosts: web
+  become: true
+  tasks:
+   - name: checking now
+      debug:
+       msg: "Webserver is Working"
+      when: webserver_response.status == 200

@@ -1,0 +1,10 @@
+---
+- name: restarting service
+  hosts: web
+  become: true
+  tasks:
+   - name: httpd restarting now
+     service:
+      name: httpd
+      state: restarted
+     when: inventory_hostname in groups['all']

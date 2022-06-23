@@ -1,0 +1,2 @@
+[hardware]
+10.0.146.223 ansible_user=ec2-user

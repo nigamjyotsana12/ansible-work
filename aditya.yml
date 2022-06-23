@@ -1,0 +1,11 @@
+---
+- name: Deploying the User name Template
+  hosts: web
+  become: true
+  vars:
+   - user_name: "Aditya Mishra"
+  tasks:
+   - name: deploying the template
+     template:
+      src: aditya.j2
+      dest: /aditya.txt

@@ -1,0 +1,10 @@
+---
+- name: deploying hostname of all nodes
+  hosts: all
+  become: true
+  tasks:
+   - name: deplying all hostnames
+     template:
+      src: hosts.j2
+      dest: /tmp/myhosts
+

@@ -1,0 +1,22 @@
+---
+- name: creating groups and user and adding users to groups
+  hosts: web
+  become: true
+  vars:
+   group_name: sales
+   user_name: rohan
+  tasks:
+   - name: creating {{ group_name }}
+     group: 
+      name: "{{ group_name }}"
+      state: present
+
+   - name: adding {{ user_name }} and its group
+     user:
+      name: "{{ user_name }}"
+      state: present
+      append: true
+      groups: "{{ group_name }}"
+        
+   
+

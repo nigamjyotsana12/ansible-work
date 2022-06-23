@@ -1,0 +1,9 @@
+---
+- name: adding dir
+  hosts: web
+  become: yes
+  tasks:
+   - name: making directory
+     file:
+      path: /directory1
+      state: directory

@@ -1,0 +1,22 @@
+---
+- name: Creating Hardware Reports for Nodes
+  hosts: hardware
+  become: true
+  vars:
+    - user_list:
+       - Addy
+       - Baddy
+       - Caddy
+       - Daddy
+       - Eddy
+  tasks:
+   - name: Creating HW Report via template
+     template:
+      src: hardware.j2
+      dest: /hardware/
+
+   - name: fetching files to control node
+     synchronize: 
+      src: /hardware/hardware.j2
+      dest: /home/ec2-user/hardware_data/{{ ansible_host }}
+      mode: pull

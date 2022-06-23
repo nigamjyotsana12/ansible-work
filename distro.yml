@@ -1,0 +1,10 @@
+---
+- name: restarting httpd in 3 Machines
+  hosts: all
+  become: true
+  tasks:
+   - name: restarting httpd
+     service:
+      name: httpd
+      state: restarted
+     when: ansible_facts['distribution'] != "RedHat"

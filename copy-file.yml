@@ -1,0 +1,10 @@
+---
+- name: copy a file to tmp
+  hosts: web
+  become: yes
+  tasks:
+   - name: copying file
+     copy:
+      src: /home/ec2-user/file121.txt
+      dest: /home/ec2-user/
+      mode: 0777

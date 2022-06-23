@@ -1,0 +1,27 @@
+---
+- name: handlers yml
+  hosts: web
+  become: true
+  tasks:
+   - name: create 1 file
+     file:
+      name: one.txt 
+      path: /one.txt
+      state: touch
+     notify: one.txt created
+  
+   - name: create 2nd file
+     file:
+      name: two.txt
+      path: /two.txt
+      state: touch
+     notify: two.txt created
+
+  handlers:
+    - name: one.txt created
+      debug:
+       msg: "ONE DONE"
+
+    - name: two.txt created
+      debug:
+       msg: "TWO DONE"

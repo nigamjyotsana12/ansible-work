@@ -1,0 +1,9 @@
+---
+- name: creating content file
+  hosts: web
+  become: yes
+  tasks:
+   - name: creating content
+     copy:
+      src: /home/ec2-user/a.txt 
+      dest: /home/ec2-user/

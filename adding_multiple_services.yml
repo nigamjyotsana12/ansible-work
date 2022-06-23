@@ -1,0 +1,13 @@
+---
+- name: adding multiple services
+  hosts: web
+  become: true
+  tasks: 
+   - name: starting 2 services
+     service: 
+       name: "{{ item }}"
+       state: started
+       enabled: true
+     loop:
+      - httpd
+      - curl

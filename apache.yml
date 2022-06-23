@@ -1,0 +1,6 @@
+---
+- name: Creating apache server via ansible galaxy role
+  hosts: web
+  become: true
+  roles:
+   - apachee

@@ -1,0 +1,18 @@
+---
+# tasks file for haproxy_lb
+- name: ensure haproxy is present
+  yum:
+   name: haproxy
+   state: present
+
+- name: ensure haproxy is started and enabled 
+  service:
+   name: haproxy
+   state: started
+   enabled: true
+
+- name: deploy haproxy into confg file
+  template:
+   src: haproxy.cfg.j2
+   dest: /etc/haproxy/haproxy.cfg
+  notify: restart haproxy service

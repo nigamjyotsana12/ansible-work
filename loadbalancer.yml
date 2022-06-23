@@ -1,0 +1,9 @@
+---
+- name: executing role for LB
+  hosts: all
+  become: true
+  tasks: 
+   - name: execute role as task
+     include_role: 
+      name: haproxy_lb
+     when: inventory_hostname in groups['controller']

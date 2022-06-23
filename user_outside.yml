@@ -1,0 +1,20 @@
+---
+- name: creating user via outside vars file
+  hosts: web
+  become: true
+  vars_files:
+   - user_date.yml
+  tasks:
+   - name: creating {{ user_group }}
+     group: 
+      name: "{{ user_group }}"
+      state: present
+
+   - name: creating {{ user_name }} and its group {{ user_group }}
+     user:
+       name: "{{ user_name }}"
+       state: present
+       append: true
+       groups: "{{ user_group }}"
+       uid: "{{ user_UID }}"
+       password: "{{ user_password | password_hash('sha512') }}" 

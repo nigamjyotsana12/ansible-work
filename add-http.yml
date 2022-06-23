@@ -1,0 +1,10 @@
+---
+- name: adding httpd to all nodes
+  hosts: web
+  become: yes
+  tasks:
+   - name: adding httpd to nodes
+     yum:
+      name: httpd
+      state: present
+

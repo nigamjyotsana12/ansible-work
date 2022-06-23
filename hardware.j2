@@ -1,0 +1,10 @@
+Hostname = {{ ansible_facts.hostname }}
+FQDN = {{ ansible_facts.fqdn }}
+OS = {{ ansible_facts.distribution }}
+BIOS_Version = {{ ansible_facts.bios_version }}
+Total_Memory = {{ ansible_facts.memtotal_mb }}
+
+User List:
+{% for user in user_list %}
+{{ loop.index }} {{ user }}
+{% endfor %}

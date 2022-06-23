@@ -1,0 +1,16 @@
+---
+- name: installing nginix via variable
+  hosts: ubuntu
+  become: true
+  vars: 
+   - pkg_name: nginx
+  tasks: 
+   - name: installing {{ pkg_name }}
+     apt:
+      update_cache: yes
+      name: "{{ pkg_name }}"
+      state: latest
+   - name: start {{ pkg_name }}
+     service:
+      name: "{{ pkg_name }}"
+      state: restarted

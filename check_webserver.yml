@@ -1,0 +1,15 @@
+---
+- name: checking webserver working or not
+  hosts: web
+  become: true
+  tasks: 
+   - name: checking webserver with check module
+     uri:
+      url: http://3.109.155.214
+      return_content: true
+     register: webserver_response
+
+   - name: check output
+     debug:
+      msg: "Webserver is Working"
+     when: webserver_response.status == 200

@@ -1,0 +1,11 @@
+---
+- name: gathering info
+  hosts: all
+  become: true
+  tasks:
+   - name: checking distribution
+     debug:
+      var: "{{ item }}"
+     with_items: 
+       - ansible_distribution
+       - ansible_fqdn
